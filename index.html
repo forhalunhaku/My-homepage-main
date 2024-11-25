@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的主页</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部按钮 -->
+        <div class="header-buttons">
+            <button id="settingsBtn" class="icon-button" title="设置">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+            </button>
+            <button id="themeToggleBtn" class="icon-button" title="切换主题">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+        <!-- 搜索区域 -->
+        <div class="search-section">
+            <div class="search-engines">
+                <button class="search-engine active" data-engine="google">
+                    <img src="https://www.google.com/favicon.ico" alt="Google">
+                    <span>Google</span>
+                </button>
+                <button class="search-engine" data-engine="bing">
+                    <img src="https://www.bing.com/favicon.ico" alt="Bing">
+                    <span>Bing</span>
+                </button>
+                <button class="search-engine" data-engine="duckduckgo">
+                    <img src="https://duckduckgo.com/favicon.ico" alt="DuckDuckGo">
+                    <span>DuckDuckGo</span>
+                </button>
+            </div>
+            <div class="search-form">
+                <input type="text" id="searchInput" placeholder="输入搜索关键词..." autocomplete="off">
+                <button id="searchButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- 书签区域 -->
+        <div class="bookmarks-section">
+            <div class="section-header">
+                <h2>我的书签</h2>
+                <div class="bookmark-controls">
+                    <div class="search-bookmark-wrapper">
+                        <input type="text" id="bookmarkSearch" placeholder="搜索书签...">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                    <button id="addBookmarkBtn" class="add-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        添加书签
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 分类按钮区域 -->
+            <div id="categoryButtons" class="category-buttons"></div>
+            
+            <!-- 书签网格 -->
+            <div id="bookmarks" class="bookmarks-grid"></div>
+        </div>
+    </div>
+
+    <!-- 书签模态框 -->
+    <div id="bookmarkModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">添加书签</h3>
+                <button id="closeModal" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="bookmarkTitle">标题</label>
+                    <input type="text" id="bookmarkTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookmarkUrl">网址</label>
+                    <input type="text" id="bookmarkUrl" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookmarkCategory">分类</label>
+                    <div class="category-select-group">
+                        <select id="bookmarkCategory"></select>
+                        <button type="button" id="addCategoryBtn">新建分类</button>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" id="saveBookmarkBtn" class="primary-btn">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 设置模态框 -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>设置</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h4>书签管理</h4>
+                    <div class="settings-actions">
+                        <button id="exportBookmarksBtn" class="btn">导出书签</button>
+                        <div class="file-input-wrapper">
+                            <button class="btn">导入书签</button>
+                            <input type="file" id="importFile" accept=".json">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
